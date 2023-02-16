@@ -9,6 +9,7 @@ TagManager:
   - pickup
   - floor
   - pillar
+  - punchable
   layers:
   - Default
   - TransparentFX
