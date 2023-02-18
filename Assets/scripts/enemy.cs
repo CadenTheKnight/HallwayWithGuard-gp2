@@ -10,17 +10,23 @@ public Transform player;
 
 public float speed;
 
-public LayerMask WhatIsGround, WhatIsPlayer; 
-//patroling
-public Vector3 walkpoint;
-bool WalkPointSet;
+public LayerMask WhatIsGround, WhatIsPlayer;
 
+ public AudioSource audioSource;
 
-
+ //patroling
+    public Vector3 walkpoint;
+    bool WalkPointSet;
+    public AudioClip Patrolclip;
+   
+ // chasing
+    public AudioClip chaseclip;
+    bool IsChasing;
 //attacking
-public float RateOfAttacks;
-bool Attacked;
-
+    public float RateOfAttacks;
+    bool Attacked;
+    public AudioClip attackclip;
+    bool IsAttacking;
 //states
 public float SightRange, AttackRange;
 public bool PlayerInSightRange, PlayerInAttackRange;
@@ -34,8 +40,13 @@ void Start()
     {
       waypointIndex = 0;
       transform.LookAt(waypoints[waypointIndex].position);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = Patrolclip;
+        audioSource.Play();
     }
-private void Awake()
+    
+
+    private void Awake()
 {
     player = GameObject.Find("Player Controller").transform;
     agent = GetComponent<NavMeshAgent>();
@@ -61,6 +72,7 @@ private void Awake()
     {
        transform.Translate(Vector3.forward * speed * Time.deltaTime);
        
+        
     }
     void IncreaseIndex()
     {
@@ -74,7 +86,15 @@ private void Awake()
 
     private void Chasing()
     {
-      agent.SetDestination(player.position);   
+      agent.SetDestination(player.position);
+        if (IsChasing != true)
+        {
+            IsChasing = true;
+            audioSource.clip = chaseclip;
+            audioSource.Play();
+            IsAttacking = false;
+        }
+        
     }
     private void Attacking()
     {
@@ -83,6 +103,14 @@ private void Awake()
 
       agent.SetDestination(transform.position);
 
-      transform.LookAt(player);  
+      transform.LookAt(player);
+        if (IsAttacking != true)
+        {
+            IsAttacking = true;
+            audioSource.clip = attackclip;
+            audioSource.Play();
+            IsChasing = false;
+        }
+
     }
 }
