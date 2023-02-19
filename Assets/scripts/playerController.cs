@@ -50,6 +50,16 @@ public class playerController : MonoBehaviour
         sanityText.text = "Sanity: " + sanity;
     }
 
+    //pick up for sanity
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "SanityPickUp") ;
+        {
+            sanity += 10;
+            Destroy(other.gameObject);
+        }
+
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
