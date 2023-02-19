@@ -62,8 +62,10 @@ public class playerController : MonoBehaviour
                 ClockOutOfWork();
             }
         }
+    if (Input.GetKeyDown(KeyCode.Escape))
+     Debug.Log("Quit!");
+    Application.Quit();
     }
-
 
     //pick up for sanity
   public void sanityrestored()
