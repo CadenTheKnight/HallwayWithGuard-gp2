@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -30,15 +31,15 @@ public class playerController : MonoBehaviour
     private float timer = 1f;
 
 
-
-
     void Start()
     {
         //gameCamera = Camera.current;
         sanity = startingSanity;
     }
 
-    void Update(){
+
+    void Update()
+    {
         if(Input.GetMouseButtonDown(0)){
             ThrowPunch();
         }
@@ -48,18 +49,31 @@ public class playerController : MonoBehaviour
             sanity--;
         }
         sanityText.text = "Sanity: " + sanity;
+        if (sanity <= 0)
+        {
+             //GameOver();
+                SceneManager.LoadScene("LoseScreen");
+        }
     }
 
+
     //pick up for sanity
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "SanityPickUp") ;
+        if (other.gameObject.name == "SanityPickUp");
         {
             sanity += 10;
             Destroy(other.gameObject);
         }
-
+    
+         if (other.gameObject.CompareTag("Mcguffin"))
+ {
+             
+                SceneManager.LoadScene("WinScreen");
+        }
     }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -80,7 +94,6 @@ public class playerController : MonoBehaviour
         if(Physics.Raycast(ray, out raycastHit, punchRange)){
             LandPunch(raycastHit.transform.gameObject, ray);
         }
-    }
 
     void LandPunch(GameObject o, Ray ray){
         if(o.tag == "enemy"){
@@ -126,3 +139,5 @@ public class playerController : MonoBehaviour
         voicelineSource.PlayOneShot(clip);
     }
 }
+}
+
