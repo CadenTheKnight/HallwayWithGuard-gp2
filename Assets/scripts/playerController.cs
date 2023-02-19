@@ -29,12 +29,13 @@ public class playerController : MonoBehaviour
 
     private int sanity;
     private float timer = 1f;
-
+    public bool CanClockOut;
 
     void Start()
     {
         //gameCamera = Camera.current;
         sanity = startingSanity;
+        CanClockOut = false;
     }
 
 
@@ -54,6 +55,13 @@ public class playerController : MonoBehaviour
              //GameOver();
                 SceneManager.LoadScene("LoseScreen");
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (CanClockOut != false)
+            {
+                ClockOutOfWork();
+            }
+        }
     }
 
 
@@ -66,11 +74,7 @@ public class playerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     
-         if (other.gameObject.CompareTag("Mcguffin"))
- {
-             
-                SceneManager.LoadScene("WinScreen");
-        }
+       
     }
 
 
@@ -139,5 +143,12 @@ public class playerController : MonoBehaviour
         voicelineSource.PlayOneShot(clip);
     }
 }
+    // clockout
+    public void ClockOutOfWork()
+    {
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
+    }
 }
 

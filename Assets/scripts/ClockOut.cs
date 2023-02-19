@@ -9,39 +9,25 @@ using TMPro;
 
 public class ClockOut : MonoBehaviour
 {
-    [SerializeField]
+    
     public TextMeshProUGUI clockOutText;
 
-
-    private bool clockOutAllowed;
-
     // Start is called before the first frame update
-    private void Start()
-    {
+     void Start()
+      {
         clockOutText.gameObject.SetActive(false);
-    }
+      }
 
-
-    // Update is called once per frame
-    private void Update()
+    //manages the on trigger enter for the clock out function
+    void OnTriggerEnter (Collider other)
     {
-    if ((clockOutAllowed = true) && (Input.GetKeyDown(KeyCode.E)))
-        ClockOutOfWork();
+        playerController player = other.GetComponent<playerController>();
+        if (player != null) 
+        {
+            player.CanClockOut = true;
+        }
     }
 
-    
-         void OnCollisionStay(Collision other)
-        {
-             if (other.gameObject.name == "Player Controller");
-
-        {
-            clockOutText.gameObject.SetActive(true);
-
-        }
-      
-        }
-    private void ClockOutOfWork()
-{
-       SceneManager.LoadScene("WinScreen");
 }
-}
+
+
