@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5007087228558696016}
   - component: {fileID: 684690749453856081}
+  - component: {fileID: 5045931952297734879}
   m_Layer: 7
   m_Name: SanityPickUp
   m_TagString: pickup
@@ -46,6 +47,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6755495, y: 0.3735476, z: 0.08640957}
   m_Center: {x: 0.95631504, y: 1.1470165, z: -1.8138835}
+--- !u!114 &5045931952297734879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636096478806181098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4b791128c610841b185025488f0963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8379973479092005326
 GameObject:
   m_ObjectHideFlags: 0

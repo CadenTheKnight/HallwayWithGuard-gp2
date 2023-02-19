@@ -66,15 +66,10 @@ public class playerController : MonoBehaviour
 
 
     //pick up for sanity
-    void OnTriggerEnter(Collider other)
+  public void sanityrestored()
     {
-        if (other.gameObject.name == "SanityPickUp");
-        {
-            sanity += 10;
-            Destroy(other.gameObject);
-        }
-    
-       
+        sanity += 10;
+        
     }
 
 
