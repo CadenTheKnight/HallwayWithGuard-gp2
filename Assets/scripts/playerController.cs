@@ -74,9 +74,10 @@ public class playerController : MonoBehaviour
             }
         }*/
 
-    if (Input.GetKeyDown(KeyCode.Escape))
-     Debug.Log("Quit!");
-    Application.Quit();
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log("Quit!");
+            Application.Quit();
+        }
     }
 
     //pick up for sanity
@@ -116,6 +117,7 @@ public class playerController : MonoBehaviour
         if(Physics.Raycast(ray, out raycastHit, punchRange)){
             LandPunch(raycastHit.transform.gameObject, ray);
         }
+    }
 
     void LandPunch(GameObject o, Ray ray){
         if(o.tag == "enemy"){
@@ -156,21 +158,23 @@ public class playerController : MonoBehaviour
             o.GetComponent<Rigidbody>().AddForce(ray.direction * punchPower*1000);
         }
     }
+    
 
     void PlayAudio(AudioClip clip){
         voicelineSource.PlayOneShot(clip);
     }
-}
+
     // clockout
     public void ClockOutOfWork()
     {
-        {
-            SceneManager.LoadScene("WinScreen");
-        }
+        SceneManager.LoadScene("WinScreen");
     }
 
-    public void setCurrentItem(GameObject item){
+
+    public void setCurrentItem(GameObject item) {
         currentItem = item;
     }
+    
 }
+
 

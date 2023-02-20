@@ -32,8 +32,13 @@ public class ClockOut : MonoBehaviour
 
     void OnTriggerExit(Collider mcguffin) {
         playerController player = mcguffin.GetComponent<playerController>();
-        clockOutText.gameObject.SetActive(false);
-        player.CanClockOut = false;
+        if (player != null) 
+        {
+            clockOutText.gameObject.SetActive(false);
+            player.CanClockOut = false;
+      
+        }
+        
 
     }
 
