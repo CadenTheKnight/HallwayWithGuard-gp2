@@ -30,12 +30,16 @@ public class playerController : MonoBehaviour
     private int sanity;
     private float timer = 1f;
     public bool CanClockOut;
+    public bool canPickupItem;
+
+    private GameObject currentItem;
 
     void Start()
     {
         //gameCamera = Camera.current;
         sanity = startingSanity;
         CanClockOut = false;
+        canPickupItem = false;
     }
 
 
@@ -57,21 +61,37 @@ public class playerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (CanClockOut != false)
+            if (CanClockOut)
             {
                 ClockOutOfWork();
             }
         }
+        /*if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (canPickupItem)
+            {
+                restoreSanity(10);
+            }
+        }*/
+
     if (Input.GetKeyDown(KeyCode.Escape))
      Debug.Log("Quit!");
     Application.Quit();
     }
 
     //pick up for sanity
-  public void sanityrestored()
+    public void restoreSanity(int amt)
     {
-        sanity += 10;
+        sanity += amt;
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("pickup"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 
@@ -82,11 +102,12 @@ public class playerController : MonoBehaviour
         float movementZ = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * movementX + transform.forward * movementZ;
+        move.Normalize();
         //Vector3 move = new Vector3(movementX, 0, movementZ);
 
         playerBody.velocity = (move * speed * Time.deltaTime * 100);
         //controller.Move = (move * speed * Time.deltaTime);
-        //playerBody.AddForce(move * speed * Time.deltaTime);
+        //playerBody.AddForce(move * speed);
     }
 
     void ThrowPunch(){
@@ -146,6 +167,10 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene("WinScreen");
         }
+    }
+
+    public void setCurrentItem(GameObject item){
+        currentItem = item;
     }
 }
 
