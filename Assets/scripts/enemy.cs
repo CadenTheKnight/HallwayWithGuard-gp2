@@ -98,19 +98,26 @@ void Start()
     }
     private void Attacking()
     {
-       //attack code here
-
-
       agent.SetDestination(transform.position);
 
       transform.LookAt(player);
         if (IsAttacking != true)
         {
+          //attack code here
+
+
+          //
+          Invoke(nameof(ResetAttack),RateOfAttacks);
             IsAttacking = true;
             audioSource.clip = attackclip;
             audioSource.Play();
             IsChasing = false;
         }
 
+    }
+
+    private void ResetAttack()
+    {
+      IsAttacking = false;
     }
 }

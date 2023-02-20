@@ -1851,6 +1851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 309bbe9781222fc4fae3bee1c6209b77, type: 3}
+      propertyPath: m_TagString
+      value: pillar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 309bbe9781222fc4fae3bee1c6209b77, type: 3}
 --- !u!1001 &146613355
@@ -27684,6 +27688,10 @@ PrefabInstance:
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: AttackRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
+      propertyPath: RateOfAttacks
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: PlayerInAttackRange
