@@ -27617,6 +27617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stand in enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5426795881069542403, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
+      propertyPath: m_TagString
+      value: punchable
+      objectReference: {fileID: 0}
     - target: {fileID: 6866307173787423942, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: m_RootOrder
       value: 6
