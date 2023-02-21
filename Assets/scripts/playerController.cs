@@ -75,10 +75,6 @@ public class playerController : MonoBehaviour
             }
         }*/
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            Debug.Log("Quit!");
-            Application.Quit();
-        }
     }
 
     //pick up for sanity
