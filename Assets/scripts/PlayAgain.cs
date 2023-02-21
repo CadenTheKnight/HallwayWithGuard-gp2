@@ -9,7 +9,7 @@ public class PlayAgain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       UnlockMouse();
     }
 
 
@@ -19,6 +19,12 @@ public class PlayAgain : MonoBehaviour
        
     }
 
+    void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    
 
     public void LoadGame()
 
