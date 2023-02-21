@@ -87,6 +87,12 @@ public class playerController : MonoBehaviour
         
     }
 
+    //bullet loses sanity
+    public void losesanity(int amt)
+    {
+        sanity -= amt;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("pickup"))
@@ -99,8 +105,8 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float movementX = Input.GetAxis("Horizontal");
-        float movementZ = Input.GetAxis("Vertical");
+        float movementX = Input.GetAxisRaw("Horizontal");
+        float movementZ = Input.GetAxisRaw("Vertical");
 
         Vector3 move = transform.right * movementX + transform.forward * movementZ;
         move.Normalize();

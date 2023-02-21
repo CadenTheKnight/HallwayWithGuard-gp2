@@ -4975,7 +4975,7 @@ GameObject:
   - component: {fileID: 421312140}
   - component: {fileID: 421312139}
   - component: {fileID: 421312138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pillars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5862,7 +5862,7 @@ GameObject:
   - component: {fileID: 482914512}
   - component: {fileID: 482914511}
   - component: {fileID: 482914510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pillars (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8954,7 +8954,7 @@ GameObject:
   - component: {fileID: 725954654}
   - component: {fileID: 725954653}
   - component: {fileID: 725954652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pillars (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14199,7 +14199,7 @@ GameObject:
   - component: {fileID: 1127437089}
   - component: {fileID: 1127437088}
   - component: {fileID: 1127437087}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pillars (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27678,8 +27678,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f1096a038d28b5040880be61966dd093, type: 3}
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 2777342326949242685, guid: aafdd59113d7bcb4587c0b512b21c3b8, type: 3}
+    - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: SightRange
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: attackclip
@@ -27687,7 +27691,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 71a121e8a7c91d445932e9ff1b39c872, type: 3}
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: AttackRange
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8744478467854154941, guid: c78ab5d833d7d134e9030c9bf6a6ff14, type: 3}
       propertyPath: RateOfAttacks

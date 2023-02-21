@@ -11,6 +11,7 @@ TagManager:
   - pillar
   - punchable
   - Mcguffin
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - pillar
   - floor
   - mcguffin
-  - 
+  - bullet
   - 
   - 
   - 

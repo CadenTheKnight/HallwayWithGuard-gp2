@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7627625872697146728}
   - component: {fileID: 8744478467854154941}
   - component: {fileID: 5270526159658778853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stand in enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -161,6 +161,8 @@ MonoBehaviour:
   WhatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  audioSource: {fileID: 0}
+  Projectile: {fileID: 0}
   walkpoint: {x: 0, y: 0, z: 0}
   Patrolclip: {fileID: 0}
   chaseclip: {fileID: 0}
