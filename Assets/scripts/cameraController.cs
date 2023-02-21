@@ -19,8 +19,8 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputX = Input.GetAxis("Mouse X")*mouseSensitivity;
-        float inputY = Input.GetAxis("Mouse Y")*mouseSensitivity;
+        float inputX = Input.GetAxis("Camera X")*mouseSensitivity;
+        float inputY = Input.GetAxis("Camera Y")*mouseSensitivity;
 
         cameraVerticalRotation -= inputY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
