@@ -21105,6 +21105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2065214125}
+  resumeFirstButton: {fileID: 1885534584}
+  MainMenuFirstButton: {fileID: 443911967}
+  QuitButton: {fileID: 641661555}
 --- !u!1001 &1593249490
 PrefabInstance:
   m_ObjectHideFlags: 0

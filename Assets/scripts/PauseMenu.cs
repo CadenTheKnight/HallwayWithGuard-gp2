@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    
+    public GameObject resumeFirstButton, MainMenuFirstButton, QuitButton; 
 
 
     void Start()
@@ -52,11 +53,14 @@ public class PauseMenu : MonoBehaviour
     }
     void Pause()
     {
-
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Debug.Log("Pause");
+        //clears the selected  game object just in case
+        EventSystem.current.SetSelectedGameObject(null);
+        //set new selected game object
+        EventSystem.current.SetSelectedGameObject(resumeFirstButton);
     }
     public void LoadMenu()
     {
