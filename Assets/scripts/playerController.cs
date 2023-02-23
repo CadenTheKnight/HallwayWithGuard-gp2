@@ -21,13 +21,14 @@ public class playerController : MonoBehaviour
     public AudioClip voiceline3;
     public AudioClip voiceline4;
     public AudioClip voiceline5;
-
+    
     public TextMeshProUGUI sanityText;
 
     private int enemiesPunched = 0;
     private int punchVoicelinesUsed = 0;
 
     private int sanity;
+    private int sanityLeft;
     private float timer = 1f;
     public bool CanClockOut;
     public bool canPickupItem;
@@ -40,6 +41,8 @@ public class playerController : MonoBehaviour
         sanity = startingSanity;
         CanClockOut = false;
         canPickupItem = false;
+        
+       
     }
 
 
@@ -54,13 +57,14 @@ public class playerController : MonoBehaviour
             timer = 1;
             sanity--;
         }
+        
         sanityText.text = "Sanity: " + sanity;
         if (sanity <= 0)
         {
              //GameOver();
                 SceneManager.LoadScene("LoseScreen");
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
             if (CanClockOut)
             {
@@ -171,6 +175,7 @@ public class playerController : MonoBehaviour
     public void ClockOutOfWork()
     {
         SceneManager.LoadScene("WinScreen");
+        
     }
 
 
