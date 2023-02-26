@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
-    
+
     public float speed = 6f;
     public float punchPower = 5f;
     public float punchRange = 3f;
@@ -21,7 +21,7 @@ public class playerController : MonoBehaviour
     public AudioClip voiceline3;
     public AudioClip voiceline4;
     public AudioClip voiceline5;
-    
+
     public TextMeshProUGUI sanityText;
 
     private int enemiesPunched = 0;
@@ -43,8 +43,8 @@ public class playerController : MonoBehaviour
         sanity = startingSanity;
         CanClockOut = false;
         canPickupItem = false;
-        
-       
+
+
     }
 
 
@@ -55,16 +55,16 @@ public class playerController : MonoBehaviour
             ThrowPunch();
         }
         timer -= Time.deltaTime;
-        if(timer <= 0){
+        if (timer <= 0) {
             timer = 1;
             sanity--;
         }
-        
+
         sanityText.text = "Sanity: " + sanity;
         if (sanity <= 0)
         {
-             //GameOver();
-                SceneManager.LoadScene("LoseScreen");
+            //GameOver();
+            SceneManager.LoadScene("LoseScreen");
         }
         if (Input.GetButtonDown("Interact"))
         {
@@ -87,7 +87,7 @@ public class playerController : MonoBehaviour
     public void restoreSanity(int amt)
     {
         sanity += amt;
-        
+
     }
 
     //bullet loses sanity
@@ -98,97 +98,96 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("pickup"))
         {
+            if (other.gameObject.CompareTag("key"))
+                keyAmount += 1;
             Destroy(other.gameObject);
         }
-{
-        if(other.gameObject.CompareTag("key"))
-        keyAmount += 1;
-        Destroy(other.gameobject);
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        float movementX = Input.GetAxisRaw("Horizontal");
-        float movementZ = Input.GetAxisRaw("Vertical");
+        {
+            float movementX = Input.GetAxisRaw("Horizontal");
+            float movementZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 move = transform.right * movementX + transform.forward * movementZ;
-        move.Normalize();
-        //Vector3 move = new Vector3(movementX, 0, movementZ);
+            Vector3 move = transform.right * movementX + transform.forward * movementZ;
+            move.Normalize();
+            //Vector3 move = new Vector3(movementX, 0, movementZ);
 
-        playerBody.velocity = (move * speed * Time.deltaTime * 100);
-        //controller.Move = (move * speed * Time.deltaTime);
-        //playerBody.AddForce(move * speed);
-    }
-
-    void ThrowPunch(){
-        RaycastHit raycastHit;
-        Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out raycastHit, punchRange)){
-            LandPunch(raycastHit.transform.gameObject, ray);
+            playerBody.velocity = (move * speed * Time.deltaTime * 100);
+            //controller.Move = (move * speed * Time.deltaTime);
+            //playerBody.AddForce(move * speed);
         }
-    }
 
-    void LandPunch(GameObject o, Ray ray){
-        if(o.tag == "enemy"){
-            Debug.Log(o + " has been punched");
-            o.GetComponent<Rigidbody>().AddForce(ray.direction * punchPower*100);
-            //Debug.Log(ray.direction * punchPower);
-            enemiesPunched++;
-
-
-            //Manages which voiceline to play after punching
-            if(!voicelineSource.isPlaying){
-                switch(punchVoicelinesUsed+1){
-                    case 1:
-                    PlayAudio(voiceline1);
-                    punchVoicelinesUsed++;
-                    break;
-                    case 2:
-                    PlayAudio(voiceline2);
-                    punchVoicelinesUsed++;
-                    break;
-                    case 3:
-                    PlayAudio(voiceline3);
-                    punchVoicelinesUsed++;
-                    break;
-                    case 4:
-                    PlayAudio(voiceline4);
-                    punchVoicelinesUsed++;
-                    break;
-                    case 5:
-                    PlayAudio(voiceline5);
-                    punchVoicelinesUsed++;
-                    break;
-                }
+        void ThrowPunch() {
+            RaycastHit raycastHit;
+            Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out raycastHit, punchRange)) {
+                LandPunch(raycastHit.transform.gameObject, ray);
             }
         }
-        if(o.tag == "punchable"){
-            Debug.Log(o + " has been punched");
-            o.GetComponent<Rigidbody>().AddForce(ray.direction * punchPower*1000);
+
+        void LandPunch(GameObject o, Ray ray) {
+            if (o.tag == "enemy") {
+                Debug.Log(o + " has been punched");
+                o.GetComponent<Rigidbody>().AddForce(ray.direction * punchPower * 100);
+                //Debug.Log(ray.direction * punchPower);
+                enemiesPunched++;
+
+
+                //Manages which voiceline to play after punching
+                if (!voicelineSource.isPlaying) {
+                    switch (punchVoicelinesUsed + 1) {
+                        case 1:
+                            PlayAudio(voiceline1);
+                            punchVoicelinesUsed++;
+                            break;
+                        case 2:
+                            PlayAudio(voiceline2);
+                            punchVoicelinesUsed++;
+                            break;
+                        case 3:
+                            PlayAudio(voiceline3);
+                            punchVoicelinesUsed++;
+                            break;
+                        case 4:
+                            PlayAudio(voiceline4);
+                            punchVoicelinesUsed++;
+                            break;
+                        case 5:
+                            PlayAudio(voiceline5);
+                            punchVoicelinesUsed++;
+                            break;
+                    }
+                }
+            }
+            if (o.tag == "punchable") 
+            {
+                Debug.Log(o + " has been punched");
+                o.GetComponent<Rigidbody>().AddForce(ray.direction * punchPower * 1000);
+            }
         }
-    }
+
+
+        void PlayAudio(AudioClip clip) 
+        {
+            voicelineSource.PlayOneShot(clip);
+        }
+
+        // clockout
+        public void ClockOutOfWork()
+        {
+            SceneManager.LoadScene("WinScreen");
+
+        }
+
+
+        public void setCurrentItem(GameObject item) 
+        {
+            currentItem = item;
+        }
+
     
 
-    void PlayAudio(AudioClip clip){
-        voicelineSource.PlayOneShot(clip);
-    }
-
-    // clockout
-    public void ClockOutOfWork()
-    {
-        SceneManager.LoadScene("WinScreen");
-        
-    }
-
-
-    public void setCurrentItem(GameObject item) {
-        currentItem = item;
-    }
-    
 }
-
-

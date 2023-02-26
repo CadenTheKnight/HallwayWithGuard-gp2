@@ -17,9 +17,9 @@ public class PickUpKey : MonoBehaviour
 
 
     // Update is called once per frame
-    void OnTriggerEnter(Collider other) ()
+    void OnTriggerEnter(Collider other) 
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetButtonDown("Interact"))
         doorColliderHere.GetComponent<BoxCollider> ().enabled = true;
         pickUpKey.SetActive (false);
     }
