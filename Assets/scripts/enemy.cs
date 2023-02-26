@@ -14,8 +14,10 @@ public LayerMask WhatIsGround, WhatIsPlayer;
 
  public AudioSource audioSource;
 
- // ranging attacks
- public GameObject Projectile;
+    public Transform firepoint;
+
+    // ranging attacks
+    public GameObject Projectile;
 
  //patroling
     public Vector3 walkpoint;
@@ -107,7 +109,7 @@ void Start()
         if (IsAttacking != true)
         {
           //attack code here
-          Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+          Rigidbody rb = Instantiate(Projectile, firepoint.position, firepoint.rotation).GetComponent<Rigidbody>();
           rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
 
           //
