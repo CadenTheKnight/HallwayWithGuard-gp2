@@ -25,20 +25,11 @@ public class sanityrestored : MonoBehaviour
     {
         if (PC != null)
         {
-            PC.canPickupItem = true;
+            
             PC.restoreSanity(restoreAmount);
             Destroy(this);
             //PC.setCurrentItem(this);
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (PC != null)
-        {
-            PC.canPickupItem = false;
-            //stealItemText.SetActive(false);
-            //Destroy(gameObject);
-        }
-    }
 }

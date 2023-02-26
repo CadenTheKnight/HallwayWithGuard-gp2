@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour
     private int sanityLeft;
     private float timer = 1f;
     public bool CanClockOut;
-    public bool canPickupItem;
+   
 
     private GameObject currentItem;
 
@@ -42,7 +42,7 @@ public class playerController : MonoBehaviour
         //gameCamera = Camera.current;
         sanity = startingSanity;
         CanClockOut = false;
-        canPickupItem = false;
+        
 
 
     }
@@ -73,13 +73,7 @@ public class playerController : MonoBehaviour
                 ClockOutOfWork();
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (canPickupItem)
-            {
-                restoreSanity(10);
-            }
-        }*/
+        
 
     }
 
