@@ -12,6 +12,7 @@ TagManager:
   - punchable
   - Mcguffin
   - bullet
+  - key
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,8 @@ public class playerController : MonoBehaviour
 
     private GameObject currentItem;
 
+    public int keyAmount;
+
     void Start()
     {
         //gameCamera = Camera.current;
@@ -100,6 +102,10 @@ public class playerController : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+{
+        if(other.gameObject.CompareTag("key"))
+        keyAmount += 1;
+        Destroy(other.gameobject);
     }
 
 
