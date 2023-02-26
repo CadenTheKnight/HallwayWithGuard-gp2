@@ -39,6 +39,9 @@ private int waypointIndex;
 private float distance;
 
 
+public Animator animator;
+
+
 void Start()
     {
       waypointIndex = 0;
@@ -74,6 +77,7 @@ void Start()
     private void Patrolling()
     {
        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+       animator.SetBool("isWalking", true);
        
         
     }
@@ -90,6 +94,7 @@ void Start()
     private void Chasing()
     {
       agent.SetDestination(player.position);
+      animator.SetBool("isWalking", true);
         if (IsChasing != true)
         {
             IsChasing = true;
@@ -97,11 +102,13 @@ void Start()
             audioSource.Play();
             
         }
-        
+      
+
     }
     private void Attacking()
     {
       agent.SetDestination(transform.position);
+      animator.SetBool("isWalking", false);
 
       transform.LookAt(player);
         if (IsAttacking != true)
