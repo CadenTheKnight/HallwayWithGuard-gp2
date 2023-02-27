@@ -5,22 +5,16 @@ using UnityEngine;
 
 public class PickUpKey : MonoBehaviour
 {
-    public Component doorColliderHere;
+    public GameObject hinge;
     public  GameObject pickUpKey;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void OnTriggerStay(Collider other) 
     {
-       
-    }
-
-
-    // Update is called once per frame
-    void OnTriggerEnter(Collider other) 
-    {
-        if(Input.GetButtonDown("Interact"))
-        doorColliderHere.GetComponent<BoxCollider> ().enabled = true;
-        pickUpKey.SetActive (false);
+        if(Input.GetButtonDown("Interact")) {
+            Debug.Log("Key Picked up");
+            //hinge.GetComponent<Animator>().SetTrigger("OpenDoor");
+            hinge.SetActive(false);
+            pickUpKey.SetActive(false);
+        }
     }
 }
