@@ -51,7 +51,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        AudioListener.pause = false;
         Debug.Log("Resume");
     }
     void Pause()
@@ -60,7 +59,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        AudioListener.pause = true;
         Debug.Log("Pause");
         //clears the selected  game object just in case
         EventSystem.current.SetSelectedGameObject(null);
