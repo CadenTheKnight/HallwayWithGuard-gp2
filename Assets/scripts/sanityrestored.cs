@@ -27,7 +27,7 @@ public class sanityrestored : MonoBehaviour
         {
             
             PC.restoreSanity(restoreAmount);
-            Destroy(this);
+            Destroy(gameObject);
             //PC.setCurrentItem(this);
         }
     }
