@@ -25,35 +25,38 @@ public class PauseMenu : MonoBehaviour
             {
                 Resume();
                 
+                
             }
             else
             {
                 Pause();
                 
-        {
             }
+        
+            
        
         if (GameIsPaused && pauseMenuUI != null)
             {
-            Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             } 
-            else
+            else{
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
         }
-    
     public void Resume()
     {
+        Cursor.visible = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-         AudioListener.pause = false;
+        AudioListener.pause = false;
         Debug.Log("Resume");
     }
     void Pause()
     {
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -76,4 +79,5 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
     }
+
 }

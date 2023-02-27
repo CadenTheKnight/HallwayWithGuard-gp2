@@ -13,9 +13,10 @@ public class QuitGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
-     Debug.Log("Quit!");
-    Application.Quit();
+        if (Input.GetButtonDown("Pause")) {
+            Debug.Log("Quit!");
+            Application.Quit();
+        }
     }
 }
  

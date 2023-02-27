@@ -27,12 +27,8 @@ public class PlayAgain : MonoBehaviour
     
 
     public void LoadGame()
-
-
     {
         SceneManager.LoadScene("scene1");
-
-
     }
 
 
