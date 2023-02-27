@@ -23,6 +23,7 @@ public class playerController : MonoBehaviour
     public AudioClip voiceline5;
     
     public TextMeshProUGUI sanityText;
+    public TextMeshProUGUI objectiveText;
 
     private int enemiesPunched = 0;
     private int punchVoicelinesUsed = 0;
@@ -91,6 +92,11 @@ public class playerController : MonoBehaviour
         if (other.gameObject.CompareTag("pickup"))
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("objectiveTextCollider"))
+        {
+            //Debug.Log("collision detected objective");
+            objectiveText.gameObject.SetActive(false);
         }
     }
 
@@ -170,7 +176,6 @@ public class playerController : MonoBehaviour
         SceneManager.LoadScene("WinScreen");
         
     }
-
 
     public void setCurrentItem(GameObject item) {
         currentItem = item;

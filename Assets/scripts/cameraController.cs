@@ -8,7 +8,8 @@ public class cameraController : MonoBehaviour
 
     public float mouseSensitivity = 2.0f;
     float cameraVerticalRotation = 0;
-    bool lockedCursor = true;
+    public bool paused = false;
+    //bool lockedCursor = true;
 
     void Start()
     {
@@ -19,15 +20,17 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputX = Input.GetAxis("Camera X")*mouseSensitivity;
-        float inputY = Input.GetAxis("Camera Y")*mouseSensitivity;
+        if(!paused){
+            float inputX = Input.GetAxis("Camera X")*mouseSensitivity;
+            float inputY = Input.GetAxis("Camera Y")*mouseSensitivity;
 
-        cameraVerticalRotation -= inputY;
-        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
+            cameraVerticalRotation -= inputY;
+            cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
 
-        transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
+            transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
 
-        playerPosition.Rotate(Vector3.up*inputX);
+            playerPosition.Rotate(Vector3.up*inputX);
+        }
 
     }
 }

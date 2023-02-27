@@ -13,6 +13,7 @@ TagManager:
   - Mcguffin
   - bullet
   - key
+  - objectiveTextCollider
   layers:
   - Default
   - TransparentFX
