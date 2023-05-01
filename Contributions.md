@@ -6,3 +6,4 @@ CadenTheKnight: -responsible for making the player's movement code
                 -made the pickup code to restore a certian amount of sanity 
                 -made the code for picking up the "key" to unlock the door for the macguffin
                 -responsible for making the code for the macguffin
+                -coded a short range punch attack to use against enemies
